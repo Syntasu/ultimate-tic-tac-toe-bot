@@ -1,0 +1,175 @@
+settings player_names player0,player1
+settings your_bot player0
+settings timebank 10000
+settings time_per_move 100
+settings your_botid 0
+update game round 1
+update game field .,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.
+update game macroboard -1,-1,-1,-1,-1,-1,-1,-1,-1
+action move 10000
+Output from your bot: "place_disc 4 2"
+update game round 2
+update game field .,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.
+update game macroboard .,-1,.,.,.,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 5 0"
+update game round 3
+update game field .,.,.,.,.,0,.,.,1,.,.,.,.,.,.,.,.,.,.,.,.,.,0,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.
+update game macroboard .,.,-1,.,.,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 6 0"
+update game round 4
+update game field .,.,.,.,.,0,0,.,1,.,.,.,.,.,.,.,.,.,.,1,.,.,0,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.
+update game macroboard .,.,.,.,.,.,.,-1,.
+action move 10000
+Output from your bot: "place_disc 3 6"
+update game round 5
+update game field .,1,.,.,.,0,0,.,1,.,.,.,.,.,.,.,.,.,.,1,.,.,0,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.
+update game macroboard .,-1,.,.,.,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 4 0"
+update game round 6
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,.,.,.,.,.,1,.,1,0,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.
+update game macroboard .,.,.,.,.,.,-1,.,.
+action move 10000
+Output from your bot: "place_disc 2 6"
+update game round 7
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,.,.,1,.,.,1,.,1,0,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,0,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.
+update game macroboard .,.,.,.,-1,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 4 5"
+update game round 8
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,.,.,1,.,.,1,.,1,0,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,.,.,.,.,.,.,0,0,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,1,.,.,.
+update game macroboard .,.,.,.,.,.,.,.,-1
+action move 10000
+Output from your bot: "place_disc 6 8"
+update game round 9
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,.,.,1,.,.,1,.,1,0,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,.,.,.,.,.,.,0,0,1,.,.,.,.,.,.,.,.,.,.,.,.,.,1,.,.,.,.,1,0,.,.
+update game macroboard .,.,.,.,.,.,-1,.,.
+action move 10000
+Output from your bot: "place_disc 0 6"
+update game round 10
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,.,.,1,.,.,1,1,1,0,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,.,.,.,.,0,.,0,0,1,.,.,.,.,.,.,.,.,.,.,.,.,.,1,.,.,.,.,1,0,.,.
+update game macroboard .,.,.,.,.,.,.,.,-1
+action move 10000
+Output from your bot: "place_disc 7 7"
+update game round 11
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,.,.,1,.,.,1,1,1,0,.,.,.,.,.,.,.,.,.,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,.,.,.,.,0,.,0,0,1,.,.,.,.,.,.,.,.,.,.,.,0,.,1,.,.,.,.,1,0,.,.
+update game macroboard .,.,-1,.,.,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 8 2"
+update game round 12
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,.,.,1,.,.,1,1,1,0,.,.,.,0,.,.,.,.,.,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,.,.,.,.,0,.,0,0,1,.,.,.,.,.,.,.,.,.,.,.,0,1,1,.,.,.,.,1,0,.,.
+update game macroboard .,.,.,.,.,-1,.,.,.
+action move 10000
+Output from your bot: "place_disc 6 5"
+update game round 13
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,.,.,1,.,.,1,1,1,0,.,.,.,0,.,.,.,.,.,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,.,0,.,.,0,.,0,0,1,.,.,.,.,.,.,.,.,.,.,.,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,.,.,.,.,.,-1
+action move 10000
+Output from your bot: "place_disc 6 7"
+update game round 14
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,.,.,1,.,.,1,1,1,0,.,.,.,0,.,1,.,.,.,1,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,.,0,.,.,0,.,0,0,1,.,.,.,.,.,.,.,.,.,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,-1,.,.,.,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 5 1"
+update game round 15
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,0,.,1,.,.,1,1,1,0,.,.,.,0,.,1,.,.,.,1,.,.,.,.,.,.,.,.,.,1,.,.,.,.,.,.,0,.,0,.,.,0,.,0,0,1,.,.,.,.,.,.,.,.,.,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,-1,.,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 1 4"
+update game round 16
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,0,.,1,.,.,1,1,1,0,.,.,.,0,.,1,.,1,.,1,.,.,.,.,0,.,.,.,.,1,.,.,.,.,.,.,0,.,0,.,.,0,.,0,0,1,.,.,.,.,.,.,.,.,.,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard -1,.,.,.,.,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 0 2"
+update game round 17
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,0,.,1,.,0,1,1,1,0,.,.,.,0,.,1,.,1,.,1,.,.,.,.,0,.,.,.,.,1,.,.,.,.,.,.,0,.,0,.,.,0,.,0,0,1,.,.,.,.,.,1,.,.,.,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,.,-1,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 3 5"
+update game round 18
+update game field .,1,.,.,0,0,0,.,1,.,.,.,.,.,0,.,1,.,0,1,1,1,0,.,.,.,0,.,1,.,1,.,1,.,.,.,.,0,.,.,.,.,1,.,.,.,.,.,0,0,.,0,.,.,0,1,0,0,1,.,.,.,.,.,1,.,.,.,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,-1,.,.,.,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 3 1"
+update game round 19
+update game field .,1,.,.,0,0,0,.,1,.,.,.,0,.,0,.,1,.,0,1,1,1,0,.,.,.,0,.,1,.,1,.,1,.,.,.,.,0,.,.,.,.,1,.,.,1,.,.,0,0,.,0,.,.,0,1,0,0,1,.,.,.,.,.,1,.,.,.,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,.,.,.,-1,.,.
+action move 10000
+Output from your bot: "place_disc 0 7"
+update game round 20
+update game field .,1,.,.,0,0,0,.,1,.,.,.,0,.,0,.,1,.,0,1,1,1,0,.,.,.,0,.,1,.,1,.,1,.,.,.,.,0,.,.,.,.,1,.,.,1,1,.,0,0,.,0,.,.,0,1,0,0,1,.,.,.,.,0,1,.,.,.,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,.,.,.,.,-1,.
+action move 10000
+Output from your bot: "place_disc 4 7"
+update game round 21
+update game field .,1,.,.,0,0,0,.,1,.,.,.,0,.,0,.,1,.,0,1,1,1,0,.,.,.,0,.,1,.,1,.,1,.,.,.,.,0,.,.,.,.,1,.,.,1,1,.,0,0,1,0,.,.,0,1,0,0,1,.,.,.,.,0,1,.,.,0,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,.,.,.,.,.,-1
+action move 10000
+Output from your bot: "place_disc 7 6"
+update game round 22
+update game field .,1,.,.,0,0,0,.,1,.,.,.,0,1,0,.,1,.,0,1,1,1,0,.,.,.,0,.,1,.,1,.,1,.,.,.,.,0,.,.,.,.,1,.,.,1,1,.,0,0,1,0,.,.,0,1,0,0,1,.,.,0,.,0,1,.,.,0,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,.,-1,.,.,.,.
+action move 10000
+Output from your bot: "place_disc 4 3"
+update game round 23
+update game field .,1,.,.,0,0,0,.,1,.,.,.,0,1,0,.,1,.,0,1,1,1,0,1,.,.,0,.,1,.,1,0,1,.,.,.,.,0,.,.,.,.,1,.,.,1,1,.,0,0,1,0,.,.,0,1,0,0,1,.,.,0,.,0,1,.,.,0,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,.,.,.,.,.,-1
+action move 10000
+Output from your bot: "place_disc 8 6"
+update game round 24
+update game field .,1,.,.,0,0,0,.,1,.,.,.,0,1,0,.,1,.,0,1,1,1,0,1,.,1,0,.,1,.,1,0,1,.,.,.,.,0,.,.,.,.,1,.,.,1,1,.,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,.,.,0,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,.,.,.,.,-1,0
+action move 10000
+Output from your bot: "place_disc 3 7"
+update game round 25
+update game field .,1,.,.,0,0,0,.,1,.,.,.,0,1,0,.,1,.,0,1,1,1,0,1,.,1,0,.,1,.,1,0,1,.,.,.,1,0,.,.,.,.,1,.,.,1,1,.,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,.,0,0,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,-1,.,.,.,.,0
+action move 10000
+Output from your bot: "place_disc 2 5"
+update game round 26
+update game field .,1,.,.,0,0,0,.,1,.,.,1,0,1,0,.,1,.,0,1,1,1,0,1,.,1,0,.,1,.,1,0,1,.,.,.,1,0,.,.,.,.,1,.,.,1,1,0,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,.,0,0,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard .,.,.,.,.,-1,.,.,0
+action move 10000
+Output from your bot: "place_disc 7 4"
+update game round 27
+update game field .,1,.,.,0,0,0,.,1,.,.,1,0,1,0,.,1,.,0,1,1,1,0,1,.,1,0,.,1,.,1,0,1,.,.,.,1,0,.,.,1,.,1,0,.,1,1,0,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,.,0,0,.,0,0,1,1,.,1,.,.,1,0,.,.
+update game macroboard -1,-1,-1,-1,1,-1,-1,-1,0
+action move 10000
+Output from your bot: "place_disc 4 8"
+update game round 28
+update game field .,1,.,.,0,0,0,.,1,.,.,1,0,1,0,.,1,.,0,1,1,1,0,1,.,1,0,.,1,.,1,0,1,.,.,.,1,0,.,.,1,.,1,0,.,1,1,0,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,.,0,0,.,0,0,1,1,.,1,1,0,1,0,.,.
+update game macroboard .,.,.,.,1,.,-1,.,0
+action move 10000
+Output from your bot: "place_disc 2 7"
+update game round 29
+update game field .,1,.,.,0,0,0,.,1,.,.,1,0,1,0,.,1,.,0,1,1,1,0,1,.,1,0,.,1,.,1,0,1,.,1,.,1,0,.,.,1,.,1,0,.,1,1,0,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,0,0,0,.,0,0,1,1,.,1,1,0,1,0,.,.
+update game macroboard .,-1,.,.,1,.,.,.,0
+action move 10000
+Output from your bot: "place_disc 3 0"
+update game round 30
+update game field .,1,1,0,0,0,0,.,1,.,.,1,0,1,0,.,1,.,0,1,1,1,0,1,.,1,0,.,1,.,1,0,1,.,1,.,1,0,.,.,1,.,1,0,.,1,1,0,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,0,0,0,.,0,0,1,1,.,1,1,0,1,0,.,.
+update game macroboard 1,0,-1,.,1,.,.,.,0
+action move 10000
+Output from your bot: "place_disc 7 0"
+update game round 31
+update game field .,1,1,0,0,0,0,0,1,.,.,1,0,1,0,.,1,.,0,1,1,1,0,1,.,1,0,.,1,.,1,0,1,1,1,.,1,0,.,.,1,.,1,0,.,1,1,0,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,0,0,0,.,0,0,1,1,.,1,1,0,1,0,.,.
+update game macroboard 1,0,-1,-1,1,-1,-1,-1,0
+action move 10000
+Output from your bot: "place_disc 6 1"
+update game round 32
+update game field .,1,1,0,0,0,0,0,1,.,.,1,0,1,0,0,1,.,0,1,1,1,0,1,.,1,0,.,1,1,1,0,1,1,1,.,1,0,.,.,1,.,1,0,.,1,1,0,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,0,0,0,.,0,0,1,1,.,1,1,0,1,0,.,.
+update game macroboard 1,0,-1,.,1,.,.,.,0
+action move 10000
+Output from your bot: "place_disc 8 1"
+update game round 33
+update game field .,1,1,0,0,0,0,0,1,.,.,1,0,1,0,0,1,0,0,1,1,1,0,1,.,1,0,.,1,1,1,0,1,1,1,1,1,0,.,.,1,.,1,0,.,1,1,0,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,0,0,0,.,0,0,1,1,.,1,1,0,1,0,.,.
+update game macroboard 1,0,-1,.,1,1,.,.,0
+action move 10000
+Output from your bot: "place_disc 6 2"
+update game round 34
+update game field .,1,1,0,0,0,0,0,1,.,.,1,0,1,0,0,1,0,0,1,1,1,0,1,0,1,0,.,1,1,1,0,1,1,1,1,1,0,.,.,1,.,1,0,.,1,1,0,0,0,1,0,.,.,0,1,0,0,1,.,.,0,0,0,1,0,0,0,.,0,0,1,1,1,1,1,0,1,0,.,.
+update game macroboard 1,0,0,.,1,1,1,-1,0
+action move 10000
+Output from your bot: "place_disc 5 6"
