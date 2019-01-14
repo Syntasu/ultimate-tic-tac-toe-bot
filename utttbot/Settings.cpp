@@ -4,7 +4,7 @@ void Notify(string action, string value)
 {
     cerr << "Command received for action: "
         << action
-        << " with value(s):"
+        << " with value(s): "
         << value
         << endl;
 }

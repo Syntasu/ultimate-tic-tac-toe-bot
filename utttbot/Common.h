@@ -4,6 +4,9 @@
 #include <iterator>
 using namespace std;
 
+#ifndef COMMON_H
+#define COMMON_H
+
 inline vector<string> split_with_delim(const string& s, char delimiter)
 {
     vector<string> tokens;
@@ -17,3 +20,5 @@ inline vector<string> split_with_delim(const string& s, char delimiter)
 
     return tokens;
 }
+
+#endif
