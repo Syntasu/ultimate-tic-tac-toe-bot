@@ -4,18 +4,19 @@
 #include "Common.h"
 
 enum CommandScope {
-    Invalid,
-    Settings,
-    Update,
+    CmdScopeInvalid,
+    CmdScopeSettings,
+    CmdScopeUpdate,
+    CmdScopeAction
 };
 
 inline const char* CommandScopeStr(CommandScope scope)
 {
     switch (scope) {
-        case Invalid: return "Invalid";
-        case Settings: return "Settings";
-        case Update: return "Update";
-        default: return "CommandScopeUnk";
+        case CmdScopeInvalid: return "Invalid";
+        case CmdScopeSettings: return "Settings";
+        case CmdScopeUpdate: return "Update";
+        default: return "????";
     }
 }
 
@@ -26,7 +27,7 @@ struct Command {
 
     Command() 
     {
-        this->scope = CommandScope::Invalid;
+        this->scope = CommandScope::CmdScopeInvalid;
     }
 
     Command(CommandScope scope, string key, string value) 

@@ -14,6 +14,26 @@ void InvalidCommand(vector<string> input, string message)
     cerr << "... message: " << message << endl;
 }
 
+bool VerifyCommandSize(vector<string> input, int size)
+{
+    if (input.size() < size)
+    {
+        stringstream msgStream;
+        msgStream << "Command must at least have ";
+        msgStream << size;
+        msgStream << " amount of variables.";
+
+        InvalidCommand(
+            input,
+            msgStream.str()
+        );
+
+        return false;
+    }
+
+    return true;
+}
+
 Command CommandProcessor::Process()
 {
     string tempLine;
@@ -28,8 +48,8 @@ Command CommandProcessor::Process()
 
 Command CommandProcessor::GenerateCommand(vector<string> input)
 {
-    if (input.size() < 1) 
-        InvalidCommand(input, "Command too short.");
+    if (!VerifyCommandSize(input, 1))
+        return Command();
 
     //Parse the first part of the command.
     CommandScope type;
@@ -37,43 +57,40 @@ Command CommandProcessor::GenerateCommand(vector<string> input)
 
     if (identifier == "settings")
     {
-        type = CommandScope::Settings;
+        type = CommandScope::CmdScopeSettings;
 
-        if (input.size() != 3)
-        {
-            InvalidCommand(
-                input, 
-                "Settings command must at least have 3 params"
-            );
-
+        if (!VerifyCommandSize(input, 3))
             return Command();
-        }
 
         return Command(
-            CommandScope::Settings, 
+            CommandScope::CmdScopeSettings, 
             input[1], 
             input[2]
         );
     }
     else if (identifier == "update")
     {
-        type = CommandScope::Update;
+        type = CommandScope::CmdScopeUpdate;
 
-        if (input.size() != 4)
-        {
-            InvalidCommand(
-                input,
-                "Update command must at least have 4 params"
-            );
-
+        if (!VerifyCommandSize(input, 4))
             return Command();
-        }
 
         return UpdateCommand(
-            CommandScope::Update,
+            CommandScope::CmdScopeUpdate,
             input[1],
             input[2],
             input[3]
+        );
+    }
+    else if (identifier == "action")
+    {
+        if (!VerifyCommandSize(input, 3))
+            return Command();
+
+        return Command(
+            CommandScope::CmdScopeAction,
+            input[1],
+            input[2]
         );
     }
 

@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="CommandProcessor.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Settings.cpp" />
     <ClCompile Include="uttt.cpp" />
     <ClCompile Include="utttbot.cpp" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Settings.h" />
     <ClInclude Include="uttt.h" />
     <ClInclude Include="utttbot.h" />
   </ItemGroup>
