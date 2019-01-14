@@ -21,7 +21,7 @@ void Settings::Apply(Command command)
         Notify("set_your_bot", command.value);
         self_bot_name = command.value;
     }
-    else if (command.key == "your_bot_id")
+    else if (command.key == "your_botid")
     {
         Notify("set_your_bot_id", command.value);
         self_bot_id = stoi(command.value);

@@ -21,7 +21,7 @@ bool VerifyCommandSize(vector<string> input, int size)
         stringstream msgStream;
         msgStream << "Command must at least have ";
         msgStream << size;
-        msgStream << " amount of variables.";
+        msgStream << " input variables.";
 
         InvalidCommand(
             input,
