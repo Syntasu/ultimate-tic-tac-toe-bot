@@ -1,10 +1,11 @@
 #include "CommandProcessor.h"
+#include "MoveProcessor.h"
 #include "FieldManager.h"
 #include "Settings.h"
 
 void HandleSettingsCommand(Settings&, Command);
 void HandleUpdateCommand(FieldManager&, Command);
-void HandleActionCommand(Command);
+void HandleActionCommand(MoveProcessor&, Command);
 void HandleInvalidCommand(Command);
 void HandleAnyCommand(Command);
 void HandleUnknownCommand(Command);
@@ -14,6 +15,8 @@ int main()
     //Reference to our classes.
     Settings settings = Settings();
     FieldManager fieldManager = FieldManager();
+
+    MoveProcessor moveProc = MoveProcessor(settings, fieldManager);
     CommandProcessor cmdproc = CommandProcessor();
 
     Command cmd = cmdproc.Process();
@@ -25,7 +28,7 @@ int main()
     switch (cmd.scope)
     {
     case CmdScopeInvalid:  HandleInvalidCommand(cmd); break;
-    case CmdScopeAction:   HandleActionCommand(cmd); break;
+    case CmdScopeAction:   HandleActionCommand(moveProc, cmd); break;
     case CmdScopeSettings: HandleSettingsCommand(settings, cmd); break;
     case CmdScopeUpdate:   HandleUpdateCommand(fieldManager, cmd); break;
     default:               HandleUnknownCommand(cmd);
@@ -49,9 +52,10 @@ void HandleAnyCommand(Command cmd)
     cerr << "HandleAnyCommand: Received -> " << cmd;
 }
 
-void HandleActionCommand(Command cmd)
+void HandleActionCommand(MoveProcessor& moveProc, Command cmd)
 {
-    cerr << "HandleActionCommand: " << cmd;
+    string move = moveProc.ProcessMove();
+    cout << move;
 }
 
 void HandleSettingsCommand(Settings& settings, Command cmd)

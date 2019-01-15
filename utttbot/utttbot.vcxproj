@@ -155,6 +155,7 @@
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="Macrofield.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MoveProcessor.cpp" />
     <ClCompile Include="Settings.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +165,7 @@
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Macrofield.h" />
+    <ClInclude Include="MoveProcessor.h" />
     <ClInclude Include="Settings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
