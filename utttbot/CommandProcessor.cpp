@@ -75,7 +75,7 @@ Command CommandProcessor::GenerateCommand(vector<string> input)
         if (!VerifyCommandSize(input, 4))
             return Command();
 
-        return UpdateCommand(
+        return Command(
             CommandScope::CmdScopeUpdate,
             input[1],
             input[2],

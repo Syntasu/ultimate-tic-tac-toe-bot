@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CommandProcessor.cpp" />
+    <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="uttt.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="uttt.h" />
     <ClInclude Include="utttbot.h" />

@@ -26,24 +26,21 @@ struct Command {
     CommandScope scope;
     string key;
     string value;
+    string player;
 
     Command() 
     {
         this->scope = CommandScope::CmdScopeInvalid;
     }
 
-    Command(CommandScope scope, string key, string value) 
+    Command(CommandScope scope, string key, string value)
     {
         this->scope = scope;
         this->key = key;
         this->value = value;
     }
-};
 
-struct UpdateCommand : public Command {
-    string player;
-
-    UpdateCommand(CommandScope scope, string key, string value, string player)
+    Command(CommandScope scope, string key, string value, string player) 
     {
         this->scope = scope;
         this->key = key;
@@ -55,18 +52,6 @@ struct UpdateCommand : public Command {
 inline ostream& operator << (ostream& os, const Command& cmd)  
 {
     os  << CommandScopeStr(cmd.scope)
-        << ", "
-        << cmd.key
-        << ", "
-        << cmd.value
-        << endl;
-
-    return os;
-}
-
-inline ostream& operator << (ostream& os, const UpdateCommand& cmd)
-{
-    os << CommandScopeStr(cmd.scope)
         << ", "
         << cmd.key
         << ", "
