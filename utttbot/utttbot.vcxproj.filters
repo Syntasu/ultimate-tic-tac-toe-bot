@@ -15,13 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="utttbot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="uttt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CommandProcessor.cpp">
@@ -38,12 +32,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="uttt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utttbot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CommandProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>

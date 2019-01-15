@@ -156,8 +156,6 @@
     <ClCompile Include="Macrofield.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Settings.cpp" />
-    <ClCompile Include="uttt.cpp" />
-    <ClCompile Include="utttbot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Command.h" />
@@ -167,8 +165,6 @@
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Macrofield.h" />
     <ClInclude Include="Settings.h" />
-    <ClInclude Include="uttt.h" />
-    <ClInclude Include="utttbot.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
