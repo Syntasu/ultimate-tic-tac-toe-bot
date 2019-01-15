@@ -27,10 +27,10 @@ int main()
 
         switch (cmd.scope)
         {
-        case CmdScopeInvalid:  HandleInvalidCommand(cmd);
-        case CmdScopeAction:   HandleActionCommand(cmd);
-        case CmdScopeSettings: HandleSettingsCommand(settings, cmd);
-        case CmdScopeUpdate:   HandleUpdateCommand(fieldManager, cmd);
+        case CmdScopeInvalid:  HandleInvalidCommand(cmd); break;
+        case CmdScopeAction:   HandleActionCommand(cmd); break;
+        case CmdScopeSettings: HandleSettingsCommand(settings, cmd); break;
+        case CmdScopeUpdate:   HandleUpdateCommand(fieldManager, cmd); break;
         default:               HandleUnknownCommand(cmd);
         }
     }
