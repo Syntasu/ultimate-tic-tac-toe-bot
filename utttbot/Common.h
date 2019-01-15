@@ -1,7 +1,12 @@
+//TODO: this probably doesn't need to be included in common.h
+//      Since most code files use this and will automatically add
+//      the translation unit to their code, thus more overhead.
 #include <iostream>
 #include <sstream>
 #include <vector>
 #include <iterator>
+#include <array>
+
 using namespace std;
 
 #ifndef COMMON_H

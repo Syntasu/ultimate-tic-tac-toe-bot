@@ -162,6 +162,7 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Field.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="uttt.h" />

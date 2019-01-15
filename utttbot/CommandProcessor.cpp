@@ -80,9 +80,9 @@ Command CommandProcessor::GenerateCommand(vector<string> input)
 
         return Command(
             CommandScope::CmdScopeUpdate,
-            input[1],
             input[2],
-            input[3]
+            input[3],
+            input[1]
         );
     }
     else if (identifier == "action")
