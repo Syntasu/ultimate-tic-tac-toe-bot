@@ -5,10 +5,9 @@ void FieldManager::UpdateFields(string tape)
     vector<string> tapeValues = split_with_delim(tape, ',');
     string rowData = "";
     int fieldIndex = 0;
-    int offset = 0;
 
     //Loop over the 3 blocks (of 3 rows)
-    for (int b = 0; b < 3; b++)
+    for (int block = 0; block < 3; block++)
     {
         //Loop over the 3 columns.
         for (int col = 0; col < 3; col++)
@@ -19,20 +18,21 @@ void FieldManager::UpdateFields(string tape)
                 //Loop over the sub index.
                 for (int sub = 0; sub < 3; sub++)
                 {
-                    int index = offset + (row * 9 + col * 3 + sub);
+                    int index = (block * 27) + (row * 9 + col * 3 + sub);
                     rowData += tapeValues[index];
                 }
             }
 
-            fields[fieldIndex++].Set(rowData);
+            macrofield.SetField(fieldIndex++, rowData);
+            cerr << rowData << endl;
             rowData = "";
         }
-
-        //Leap the index to the next block.
-        offset += 27;
     }
+}
 
-    fields = fields;
+FieldManager::FieldManager()
+{
+    macrofield = Macrofield();
 }
 
 void FieldManager::Apply(Command command)

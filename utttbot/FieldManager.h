@@ -3,15 +3,16 @@
 
 #include "Common.h"
 #include "Command.h"
-#include "Field.h"
+#include "Macrofield.h"
 
 class FieldManager
 {
 public:
+    FieldManager();
     void Apply(Command command);
 
 private:
-    array<Field, 9> fields;
+    Macrofield macrofield;
 
     void UpdateFields(string values);
 };

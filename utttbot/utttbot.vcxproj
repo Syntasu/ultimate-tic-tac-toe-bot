@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="CommandProcessor.cpp" />
     <ClCompile Include="FieldManager.cpp" />
+    <ClCompile Include="Macrofield.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="uttt.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Common.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldManager.h" />
+    <ClInclude Include="Macrofield.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="uttt.h" />
     <ClInclude Include="utttbot.h" />

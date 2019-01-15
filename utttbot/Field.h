@@ -13,7 +13,6 @@ struct Field {
     array<FieldStates, 9> fieldSlots; 
 
     Field() {
-
         //Reset the field.
         for (int i = 0; i < 9; i++)
         {
@@ -21,7 +20,12 @@ struct Field {
         }
     }
 
-    void SetSlot(int index, FieldStates state)
+    Field(string data)
+    {
+        Set(data);
+    }
+
+    inline void SetSlot(int index, FieldStates state)
     {
         if (index > 9 || index < 0)
         {
