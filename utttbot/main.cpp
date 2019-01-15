@@ -6,10 +6,10 @@
 int main() 
 {
     //Create a pointer to the game settings class/container.
-    Settings* settings = &Settings();
+    Settings settings = Settings();
     
     //Pointer to the field manager.
-    FieldManager* fieldManager = &FieldManager();
+    FieldManager fieldManager = FieldManager();
 
     CommandProcessor cmdproc = CommandProcessor();
 
@@ -25,12 +25,12 @@ int main()
 
         if (cmd.scope == CommandScope::CmdScopeSettings)
         {
-            settings->Apply(cmd);
+            settings.Apply(cmd);
         }
 
         if (cmd.scope == CommandScope::CmdScopeUpdate)
         {
-
+            fieldManager.Apply(cmd);
         }
     }
     //UTTTBot bot;

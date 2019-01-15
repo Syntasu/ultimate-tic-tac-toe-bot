@@ -44,6 +44,9 @@ Command CommandProcessor::Process()
         commandInput = split_with_delim(tempLine, ' ');
         return this->GenerateCommand(commandInput);
     }
+
+    //Return invalid command (which is implicitly set in an empty constructor).
+    return Command();
 }
 
 Command CommandProcessor::GenerateCommand(vector<string> input)

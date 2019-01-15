@@ -1,12 +1,5 @@
 #include "FieldManager.h"
 
-
-
-FieldManager::FieldManager()
-{
-}
-
-
-FieldManager::~FieldManager()
+void FieldManager::Apply(Command command)
 {
 }
