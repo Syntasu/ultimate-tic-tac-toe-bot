@@ -17,7 +17,6 @@ inline const char* CommandScopeStr(CommandScope scope)
         case CmdScopeSettings: return "Settings";
         case CmdScopeUpdate: return "Update";
         case CmdScopeAction: return "Action";
-
         default: return "????";
     }
 }

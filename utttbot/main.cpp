@@ -3,39 +3,67 @@
 #include "FieldManager.h"
 #include "Settings.h"
 
+void HandleSettingsCommand(Settings&, Command);
+void HandleUpdateCommand(FieldManager&, Command);
+void HandleActionCommand(Command);
+void HandleInvalidCommand(Command);
+void HandleAnyCommand(Command);
+void HandleUnknownCommand(Command);
+
 int main() 
 {
-    //Create a pointer to the game settings class/container.
+    //Reference to our classes.
     Settings settings = Settings();
-    
-    //Pointer to the field manager.
     FieldManager fieldManager = FieldManager();
-
     CommandProcessor cmdproc = CommandProcessor();
 
     while (true)
     {
         Command cmd = cmdproc.Process();
 
-        //Log any command we receive.
+        //The command is anything but invalid... then log it.
         if (cmd.scope != CommandScope::CmdScopeInvalid)
-        {
-            cerr << "Received command: " << cmd;
-        }
+            HandleAnyCommand(cmd);
 
-        if (cmd.scope == CommandScope::CmdScopeSettings)
+        switch (cmd.scope)
         {
-            settings.Apply(cmd);
-        }
-
-        if (cmd.scope == CommandScope::CmdScopeUpdate)
-        {
-            fieldManager.Apply(cmd);
+        case CmdScopeInvalid:  HandleInvalidCommand(cmd);
+        case CmdScopeAction:   HandleActionCommand(cmd);
+        case CmdScopeSettings: HandleSettingsCommand(settings, cmd);
+        case CmdScopeUpdate:   HandleUpdateCommand(fieldManager, cmd);
+        default:               HandleUnknownCommand(cmd);
         }
     }
-    //UTTTBot bot;
-    //bot.run();
 
 	return 0;
 }
 
+void HandleInvalidCommand(Command cmd) 
+{
+    cerr << "HandleInvalidCommnad: Received -> " << cmd;
+}
+
+void HandleUnknownCommand(Command cmd)
+{
+    cerr << "HandleUnknownCommand: Received command is unknown -> " << cmd;
+}
+
+void HandleAnyCommand(Command cmd)
+{
+    cerr << "HandleAnyCommand: Received -> " << cmd;
+}
+
+void HandleActionCommand(Command cmd)
+{
+    cerr << "HandleActionCommand: " << cmd;
+}
+
+void HandleSettingsCommand(Settings& settings, Command cmd)
+{
+    settings.Apply(cmd);
+}
+
+void HandleUpdateCommand(FieldManager& fieldManager, Command cmd)
+{
+    fieldManager.Apply(cmd);
+}
