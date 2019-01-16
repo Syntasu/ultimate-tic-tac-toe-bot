@@ -41,7 +41,7 @@ public:
 //      array based on value, so we don't have to run same logic over and over again.
 //
 inline EvalResult EvaluateField(
-    Field& field, FieldState& perspective, array<int, 3> indices)
+    Field& field, FieldState perspective, array<int, 3> indices)
 {
     int completed = 0;
     FieldState owner = FSEmpty;
@@ -49,6 +49,9 @@ inline EvalResult EvaluateField(
     for (int i = 0; i < 3; i++)
     {
         FieldState currentOwner = field.GetSlot(indices[i]);
+
+        if(currentOwner == FSEmpty)
+            continue;
 
         if (owner == FSEmpty)
         {
@@ -77,10 +80,42 @@ inline EvalResult EvaluateField(
         if (completed == 3) score += EVAL_WIN;
     }
 
-    score = owner == perspective ? score : -score;
-    return EvalResult(score, owner, completed == 3);
+    bool hasWinner = completed == 3 && owner != FSEmpty;
+    return EvalResult(score, owner, hasWinner);
 }
 
+int HasWinner(Field field)
+{
+    vector<EvalResult> results = {
+        //Rows...
+        EvaluateField(field, FSSelf, { 0, 1, 2 }),
+        EvaluateField(field, FSSelf, { 3, 4, 5 }),
+        EvaluateField(field, FSSelf, { 6, 7, 8 }),
+
+        //Cols...
+        EvaluateField(field, FSSelf, { 0, 3, 6 }),
+        EvaluateField(field, FSSelf, { 1, 4, 7 }),
+        EvaluateField(field, FSSelf, { 2, 5, 8 }),
+
+        //Diagonals...
+        EvaluateField(field, FSSelf, { 0, 4, 8 }),
+        EvaluateField(field, FSSelf, { 2, 4, 6 }),
+    };
+
+    vector<EvalResult>::const_iterator it = results.begin();
+
+    for (; it != results.end(); it++)
+    {
+        EvalResult result = *it;
+
+        if (result.winner)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 inline int Evaluate(Field& field, FieldState& perspective)
 {
@@ -110,7 +145,14 @@ inline int Evaluate(Field& field, FieldState& perspective)
 
         if (result.winner)
         {
-            return result.score;
+            if (result.owner == FSOpponent)
+            {
+                return -result.score;
+            }
+            else
+            {
+                return result.score;
+            }
         }
 
         score += result.score;

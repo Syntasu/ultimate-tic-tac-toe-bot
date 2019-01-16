@@ -2,11 +2,11 @@
 
 void Solver::Reset()
 {
-    AiBestMove = -1;
-    AiBestScore = -1;
+    AiBestMove = -999;
+    AiBestScore = -999;
 }
 
-int Solver::GetOptimalMove(Field field)
+int Solver::ProcessMove(Field field)
 {
     AlphaBetaPruningSolver(field, 9, 
         SOLVER_MAXIMIZER_WORST, 
@@ -93,9 +93,9 @@ int Solver::MinimaxSolver(Field field, int depth, bool maximizing)
 int Solver::AlphaBetaPruningSolver(
     Field field, int depth, int alpha, int beta, bool maximizing)
 {
+    FieldState player = maximizing ? FSSelf : FSOpponent;
     if (depth == 0 || field.IsTerminal())
     {
-        FieldState player = maximizing ? FSSelf : FSOpponent;
         return FieldEvaluationFunction(field, player);
     }
 

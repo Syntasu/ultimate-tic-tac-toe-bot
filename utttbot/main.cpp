@@ -17,18 +17,29 @@ int main()
 {
     Solver solver = Solver();
 
-    Field field = Field(".11110010");
-    solver.Reset();
-    int bestMove = solver.GetOptimalMove(field);
-    if (bestMove > 0)
-    {
-        FieldState state = field.GetPlayerTurn();
-        field.SetSlot(bestMove, state);
-    }
-    else
+    Field field = Field(".........");
 
+
+    while (!field.IsTerminal())
     {
-        cerr << "Failed to get move";
+        if (HasWinner(field))
+        {
+            break;
+        }
+
+        solver.Reset();
+
+        int bestMove = solver.ProcessMove(field);
+        if (bestMove > 0)
+        {
+            FieldState state = field.GetPlayerTurn();
+            field.SetSlot(bestMove, state);
+            cerr << bestMove << endl;
+        }
+        else
+        {
+            cerr << "Failed to get move";
+        }
     }
     cin.get();
 

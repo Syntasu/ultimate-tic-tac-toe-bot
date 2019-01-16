@@ -5,6 +5,6 @@
 #include "Field.h"
 
 int FieldEvaluationFunction(Field field, FieldState perspective);
-vector<Field> FieldBranchingFunction(Field baseField);
+int HasWinner(Field field);
 
 #endif

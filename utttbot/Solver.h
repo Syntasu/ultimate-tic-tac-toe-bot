@@ -12,13 +12,13 @@ class Solver {
 
 public:
     void Reset();
-    int GetOptimalMove(Field field);
+    int ProcessMove(Field field);
     vector<Field> Expand(Field);
     int MinimaxSolver(Field field, int depth, bool maximizing);
     int AlphaBetaPruningSolver(Field field, int depth, int alpha, int beta, bool maximizing);
 
 private:
-    int AiBestScore = -1;
+    int AiBestScore = -999;
     int AiBestMove = -1;
 };
 

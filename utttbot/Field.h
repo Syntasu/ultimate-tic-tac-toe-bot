@@ -120,11 +120,18 @@ struct Field {
 
         for (int i = 0; i < 9; i++)
         {
-            if (fieldSlots[i] == FSSelf) playerSelf++;
-            else if (fieldSlots[i] == FSOpponent) playerOpponent++;
+            if (fieldSlots[i] == FSSelf)
+            {
+                playerSelf++;
+            }
+            else if (fieldSlots[i] == FSOpponent)
+            {
+                playerOpponent++;
+            }
         }
 
-        return (playerSelf >= playerOpponent) ? FSOpponent : FSSelf;
+        if (playerSelf == playerOpponent) return FSSelf;
+        return (playerSelf > playerOpponent) ? FSOpponent : FSSelf;
     }
 
     inline int GetLastMove()
