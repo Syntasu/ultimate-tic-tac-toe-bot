@@ -97,6 +97,35 @@ struct Field {
         return true;
     }
 
+    inline vector<int> GetEmptySlots()
+    {
+        vector<int> indices;
+
+        for (int i = 0; i < 9; i++)
+        {
+            if (fieldSlots[i] == FSEmpty)
+            {
+                indices.push_back(i);
+            }
+        }
+
+        return indices;
+    }
+
+    inline FieldStates GetPlayerTurn()
+    {
+        int playerSelf = 0;
+        int playerOpponent = 0;
+
+        for (int i = 0; i < 9; i++)
+        {
+            if (fieldSlots[i] == FSSelf) playerSelf++;
+            else if (fieldSlots[i] == FSOpponent) playerSelf++;
+        }
+
+        return (playerSelf > playerOpponent) ? FSOpponent : FSSelf;
+    }
+
 };
 
 #endif

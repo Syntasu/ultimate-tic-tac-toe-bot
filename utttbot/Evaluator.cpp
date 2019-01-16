@@ -235,5 +235,20 @@ int FieldEvaluationFunction(Field field, FieldStates perspective)
 
 vector<Field> FieldBranchingFunction(Field baseField)
 {
-    return vector<Field>();
+    vector<Field> mutatedFields;
+    FieldStates currentPlayer = baseField.GetPlayerTurn();
+    vector<int> valid_slots = baseField.GetPlayableSlots();
+
+    //Generate all the valid moves.
+    vector<int>::const_iterator it = valid_slots.begin();
+
+    //Play one move on all the boards.
+    for (int i = 0; i < valid_slots.size(); i++)
+    {
+        Field mutatedField = baseField;
+        mutatedField.SetSlot(valid_slots[i], currentPlayer);
+        mutatedFields.push_back(mutatedField);
+    }
+
+    return mutatedFields;
 }
