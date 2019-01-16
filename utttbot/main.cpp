@@ -25,6 +25,8 @@ int main()
         FieldBranchingFunction
     );
 
+    Field bestMove = tree.Prune();
+
     int brek = 0;
 
 

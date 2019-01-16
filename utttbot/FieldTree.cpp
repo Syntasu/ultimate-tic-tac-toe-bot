@@ -38,8 +38,7 @@ void FieldTree::Build(
     //Tell all our mutated fields to also build a tree themselves.
     for (;it != branches.end(); it++)
     {
-        Field mutatedField = Field(*it);
-        FieldNode* mutatedNode = new FieldNode(mutatedField);
+        FieldNode* mutatedNode = new FieldNode(*it);
         this->Build(mutatedNode, depth - 1, eval, branch);
 
         node->branches.push_back(mutatedNode);
