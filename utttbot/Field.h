@@ -97,7 +97,7 @@ struct Field {
         return true;
     }
 
-    inline vector<int> GetEmptySlots()
+    inline vector<int> GetPlayableSlots()
     {
         vector<int> indices;
 

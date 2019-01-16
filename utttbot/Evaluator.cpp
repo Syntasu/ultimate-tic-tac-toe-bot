@@ -247,6 +247,8 @@ vector<Field> FieldBranchingFunction(Field baseField)
     {
         Field mutatedField = baseField;
         mutatedField.SetSlot(valid_slots[i], currentPlayer);
+        mutatedField.score = FieldEvaluationFunction(mutatedField, FSSelf);
+
         mutatedFields.push_back(mutatedField);
     }
 

@@ -2,6 +2,7 @@
 #include "MoveProcessor.h"
 #include "FieldManager.h"
 #include "Settings.h"
+#include "FieldTree.h"
 #include "Evaluator.h"
 
 void HandleSettingsCommand(Settings&, Command);
@@ -13,34 +14,45 @@ void HandleUnknownCommand(Command);
 
 int main() 
 {
-    Field f = Field(".0..111.1");
-    int value = FieldEvaluationFunction(f, FSSelf);
-    cerr << value;
-    cin.get();
+    Field f = Field(".0..1.....");
+    FieldNode* node = new FieldNode(f);
 
- //   //Reference to our classes.
- //   Settings settings = Settings();
- //   FieldManager fieldManager = FieldManager();
+    FieldTree tree = FieldTree(FSSelf);
 
- //   MoveProcessor moveProc = MoveProcessor(settings, fieldManager);
- //   CommandProcessor cmdproc = CommandProcessor();
+    tree.Build(
+        node, 9,
+        FieldEvaluationFunction,
+        FieldBranchingFunction
+    );
 
- //   Command cmd = cmdproc.Process();
+    int brek = 0;
 
- //   //The command is anything but invalid... then log it.
- //   if (cmd.scope != CommandScope::CmdScopeInvalid)
- //       HandleAnyCommand(cmd);
 
- //   switch (cmd.scope)
- //   {
- //   case CmdScopeInvalid:  HandleInvalidCommand(cmd); break;
- //   case CmdScopeAction:   HandleActionCommand(moveProc, cmd); break;
- //   case CmdScopeSettings: HandleSettingsCommand(settings, cmd); break;
- //   case CmdScopeUpdate:   HandleUpdateCommand(fieldManager, cmd); break;
- //   default:               HandleUnknownCommand(cmd);
- //   }
 
-	//return 0;
+
+    ////Reference to our classes.
+    //Settings settings = Settings();
+    //FieldManager fieldManager = FieldManager();
+
+    //MoveProcessor moveProc = MoveProcessor(settings, fieldManager);
+    //CommandProcessor cmdproc = CommandProcessor();
+
+    //Command cmd = cmdproc.Process();
+
+    ////The command is anything but invalid... then log it.
+    //if (cmd.scope != CommandScope::CmdScopeInvalid)
+    //    HandleAnyCommand(cmd);
+
+    //switch (cmd.scope)
+    //{
+    //case CmdScopeInvalid:  HandleInvalidCommand(cmd); break;
+    //case CmdScopeAction:   HandleActionCommand(moveProc, cmd); break;
+    //case CmdScopeSettings: HandleSettingsCommand(settings, cmd); break;
+    //case CmdScopeUpdate:   HandleUpdateCommand(fieldManager, cmd); break;
+    //default:               HandleUnknownCommand(cmd);
+    //}
+
+	return 0;
 }
 
 void HandleInvalidCommand(Command cmd) 
