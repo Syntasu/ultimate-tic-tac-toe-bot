@@ -237,6 +237,7 @@ vector<Field> FieldBranchingFunction(Field baseField)
 {
     vector<Field> mutatedFields;
     FieldStates currentPlayer = baseField.GetPlayerTurn();
+    cerr << currentPlayer << endl;
     vector<int> valid_slots = baseField.GetPlayableSlots();
 
     //Generate all the valid moves.

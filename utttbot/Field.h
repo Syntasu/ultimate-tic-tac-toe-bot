@@ -120,7 +120,7 @@ struct Field {
         for (int i = 0; i < 9; i++)
         {
             if (fieldSlots[i] == FSSelf) playerSelf++;
-            else if (fieldSlots[i] == FSOpponent) playerSelf++;
+            else if (fieldSlots[i] == FSOpponent) playerOpponent++;
         }
 
         return (playerSelf > playerOpponent) ? FSOpponent : FSSelf;
