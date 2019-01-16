@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CommandProcessor.cpp" />
+    <ClCompile Include="Evaluator.cpp" />
     <ClCompile Include="FieldManager.cpp" />
     <ClCompile Include="FieldTree.cpp" />
     <ClCompile Include="Macrofield.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Evaluator.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldManager.h" />
     <ClInclude Include="FieldTree.h" />

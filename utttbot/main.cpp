@@ -2,6 +2,7 @@
 #include "MoveProcessor.h"
 #include "FieldManager.h"
 #include "Settings.h"
+#include "Evaluator.h"
 
 void HandleSettingsCommand(Settings&, Command);
 void HandleUpdateCommand(FieldManager&, Command);
@@ -12,29 +13,34 @@ void HandleUnknownCommand(Command);
 
 int main() 
 {
-    //Reference to our classes.
-    Settings settings = Settings();
-    FieldManager fieldManager = FieldManager();
+    Field f = Field(".0..111.1");
+    int value = FieldEvaluationFunction(f, FSSelf);
+    cerr << value;
+    cin.get();
 
-    MoveProcessor moveProc = MoveProcessor(settings, fieldManager);
-    CommandProcessor cmdproc = CommandProcessor();
+ //   //Reference to our classes.
+ //   Settings settings = Settings();
+ //   FieldManager fieldManager = FieldManager();
 
-    Command cmd = cmdproc.Process();
+ //   MoveProcessor moveProc = MoveProcessor(settings, fieldManager);
+ //   CommandProcessor cmdproc = CommandProcessor();
 
-    //The command is anything but invalid... then log it.
-    if (cmd.scope != CommandScope::CmdScopeInvalid)
-        HandleAnyCommand(cmd);
+ //   Command cmd = cmdproc.Process();
 
-    switch (cmd.scope)
-    {
-    case CmdScopeInvalid:  HandleInvalidCommand(cmd); break;
-    case CmdScopeAction:   HandleActionCommand(moveProc, cmd); break;
-    case CmdScopeSettings: HandleSettingsCommand(settings, cmd); break;
-    case CmdScopeUpdate:   HandleUpdateCommand(fieldManager, cmd); break;
-    default:               HandleUnknownCommand(cmd);
-    }
+ //   //The command is anything but invalid... then log it.
+ //   if (cmd.scope != CommandScope::CmdScopeInvalid)
+ //       HandleAnyCommand(cmd);
 
-	return 0;
+ //   switch (cmd.scope)
+ //   {
+ //   case CmdScopeInvalid:  HandleInvalidCommand(cmd); break;
+ //   case CmdScopeAction:   HandleActionCommand(moveProc, cmd); break;
+ //   case CmdScopeSettings: HandleSettingsCommand(settings, cmd); break;
+ //   case CmdScopeUpdate:   HandleUpdateCommand(fieldManager, cmd); break;
+ //   default:               HandleUnknownCommand(cmd);
+ //   }
+
+	//return 0;
 }
 
 void HandleInvalidCommand(Command cmd) 

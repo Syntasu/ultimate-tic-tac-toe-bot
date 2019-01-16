@@ -42,6 +42,19 @@ struct Field {
         fieldSlots[index] = state;
     }
 
+    inline FieldStates GetSlot(int index)
+    {
+        if (index > 9 || index < 0)
+        {
+            cerr << "Trying to set slot of a field out of bounds: "
+                << index
+                << endl;
+            return FieldStates::FSEmpty;
+        }
+
+        return fieldSlots[index];
+    }
+
     void Set(string tape)
     {
         if (tape.size() < 9) {
@@ -62,16 +75,28 @@ struct Field {
         }
     }
 
-    bool IsTerminal()
+    inline bool IsTerminal()
     {
         for (int i = 0; i < 9; i++)
         {
             if (fieldSlots[i] == FieldStates::FSEmpty)
-                return true;
+                return false;
         }
 
-        return false;
+        return true;
     }
+
+    inline bool IsEmpty()
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            if (fieldSlots[i] != FieldStates::FSEmpty)
+                return false;
+        }
+
+        return true;
+    }
+
 };
 
 #endif
