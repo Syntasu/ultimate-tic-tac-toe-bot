@@ -4,6 +4,7 @@
 #include "Settings.h"
 #include "FieldTree.h"
 #include "Evaluator.h"
+#include "Solver.h"
 
 void HandleSettingsCommand(Settings&, Command);
 void HandleUpdateCommand(FieldManager&, Command);
@@ -14,20 +15,22 @@ void HandleUnknownCommand(Command);
 
 int main() 
 {
-    Field f = Field(".0..1.....");
-    FieldNode* node = new FieldNode(f);
+    Solver solver = Solver();
 
-    FieldTree tree = FieldTree(FSSelf);
+    Field field = Field(".11110010");
+    solver.Reset();
+    int bestMove = solver.GetOptimalMove(field);
+    if (bestMove > 0)
+    {
+        FieldState state = field.GetPlayerTurn();
+        field.SetSlot(bestMove, state);
+    }
+    else
 
-    tree.Build(
-        node, 9,
-        FieldEvaluationFunction,
-        FieldBranchingFunction
-    );
-
-    Field bestMove = tree.Prune();
-
-    int brek = 0;
+    {
+        cerr << "Failed to get move";
+    }
+    cin.get();
 
 
 

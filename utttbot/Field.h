@@ -3,7 +3,7 @@
 
 #include "Common.h"
 
-enum FieldStates {
+enum FieldState {
     FSEmpty,
     FSSelf,
     FSOpponent,
@@ -12,13 +12,14 @@ enum FieldStates {
 struct Field {
 
     int score;
-    array<FieldStates, 9> fieldSlots; 
+    array<FieldState, 9> fieldSlots; 
+    int lastMove;
 
     Field() {
         //Reset the field.
         for (int i = 0; i < 9; i++)
         {
-            fieldSlots[i] = FieldStates::FSEmpty;
+            fieldSlots[i] = FieldState::FSEmpty;
         }
 
         score = 0;
@@ -29,7 +30,7 @@ struct Field {
         Set(data);
     }
 
-    inline void SetSlot(int index, FieldStates state)
+    inline void SetSlot(int index, FieldState state)
     {
         if (index > 9 || index < 0)
         {
@@ -40,18 +41,18 @@ struct Field {
         }
 
         fieldSlots[index] = state;
+        lastMove = index;
     }
 
-    inline FieldStates GetSlot(int index)
+    inline FieldState GetSlot(int index)
     {
         if (index > 9 || index < 0)
         {
             cerr << "Trying to set slot of a field out of bounds: "
                 << index
                 << endl;
-            return FieldStates::FSEmpty;
+            return FieldState::FSEmpty;
         }
-
         return fieldSlots[index];
     }
 
@@ -68,9 +69,9 @@ struct Field {
 
             switch (tapeValue)
             {
-            case '.': SetSlot(i, FieldStates::FSEmpty); break;
-            case '0': SetSlot(i, FieldStates::FSOpponent); break;
-            case '1': SetSlot(i, FieldStates::FSSelf); break;
+            case '.': SetSlot(i, FieldState::FSEmpty); break;
+            case '0': SetSlot(i, FieldState::FSOpponent); break;
+            case '1': SetSlot(i, FieldState::FSSelf); break;
             }
         }
     }
@@ -79,7 +80,7 @@ struct Field {
     {
         for (int i = 0; i < 9; i++)
         {
-            if (fieldSlots[i] == FieldStates::FSEmpty)
+            if (fieldSlots[i] == FieldState::FSEmpty)
                 return false;
         }
 
@@ -90,7 +91,7 @@ struct Field {
     {
         for (int i = 0; i < 9; i++)
         {
-            if (fieldSlots[i] != FieldStates::FSEmpty)
+            if (fieldSlots[i] != FieldState::FSEmpty)
                 return false;
         }
 
@@ -112,7 +113,7 @@ struct Field {
         return indices;
     }
 
-    inline FieldStates GetPlayerTurn()
+    inline FieldState GetPlayerTurn()
     {
         int playerSelf = 0;
         int playerOpponent = 0;
@@ -123,7 +124,12 @@ struct Field {
             else if (fieldSlots[i] == FSOpponent) playerOpponent++;
         }
 
-        return (playerSelf > playerOpponent) ? FSOpponent : FSSelf;
+        return (playerSelf >= playerOpponent) ? FSOpponent : FSSelf;
+    }
+
+    inline int GetLastMove()
+    {
+        return lastMove;
     }
 
 };

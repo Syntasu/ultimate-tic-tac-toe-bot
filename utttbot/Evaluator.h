@@ -4,7 +4,7 @@
 #include "Common.h"
 #include "Field.h"
 
-int FieldEvaluationFunction(Field field, FieldStates perspective);
+int FieldEvaluationFunction(Field field, FieldState perspective);
 vector<Field> FieldBranchingFunction(Field baseField);
 
 #endif

@@ -4,7 +4,7 @@
 #include "Common.h"
 #include "Field.h"
 
-typedef function<int(const Field&, FieldStates)> EvalFunc;
+typedef function<int(const Field&, FieldState)> EvalFunc;
 typedef function<vector<Field>(Field)> BranchFunc;
 
 
@@ -23,13 +23,12 @@ struct FieldNode {
 class FieldTree
 {
 public:
-    FieldTree(FieldStates);
-    void Build(FieldNode*, int, EvalFunc, BranchFunc);
-    Field Prune();
+    FieldTree(FieldState);
+    FieldNode* GetRoot();
 
 private:
 
-    FieldStates perspective;
+    FieldState perspective;
     FieldNode* root;
     bool hasRoot = false;
 };
