@@ -13,8 +13,7 @@ public:
 
 private:
     Macrofield macrofield;
-
-    void UpdateFields(string values);
+    void RedefineFields(string values);
 };
 
 #endif

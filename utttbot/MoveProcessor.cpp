@@ -1,6 +1,5 @@
 #include "MoveProcessor.h"
 
-
 MoveProcessor::MoveProcessor(Settings& settings, FieldManager& field)
     : gameSettings(settings), gameField(field)
 {}

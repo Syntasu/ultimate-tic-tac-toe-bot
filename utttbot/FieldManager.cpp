@@ -1,6 +1,6 @@
 #include "FieldManager.h"
 
-void FieldManager::UpdateFields(string tape)
+void FieldManager::RedefineFields(string tape)
 {
     vector<string> tapeValues = split_with_delim(tape, ',');
     string rowData = "";
@@ -32,6 +32,7 @@ void FieldManager::UpdateFields(string tape)
 
 FieldManager::FieldManager()
 {
+    //Initialize the macrofield.
     macrofield = Macrofield();
 }
 
@@ -42,7 +43,11 @@ void FieldManager::Apply(Command command)
     {
         if (command.key == "field")
         {
-            this->UpdateFields(command.value);
+            //Update the definitions of the fields.
+            this->RedefineFields(command.value);
+
+            //Recalculate all the fields
+            macrofield.CalculateFieldScores();
         }
     }
 }

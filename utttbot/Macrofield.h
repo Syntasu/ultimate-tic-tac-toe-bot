@@ -9,6 +9,7 @@ struct Macrofield
     array<Field, 9> fields;
 
     void SetField(int index, string fieldData);
+    void CalculateFieldScores();
 };
 
 #endif

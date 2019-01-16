@@ -10,6 +10,8 @@ enum FieldStates {
 };
 
 struct Field {
+
+    int score;
     array<FieldStates, 9> fieldSlots; 
 
     Field() {
@@ -18,6 +20,8 @@ struct Field {
         {
             fieldSlots[i] = FieldStates::FSEmpty;
         }
+
+        score = 0;
     }
 
     Field(string data)
@@ -56,6 +60,17 @@ struct Field {
             case '1': SetSlot(i, FieldStates::FSSelf); break;
             }
         }
+    }
+
+    bool IsTerminal()
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            if (fieldSlots[i] == FieldStates::FSEmpty)
+                return true;
+        }
+
+        return false;
     }
 };
 
