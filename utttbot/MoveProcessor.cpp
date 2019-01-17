@@ -20,16 +20,16 @@ int MoveProcessor::GetMoveForField(Field field)
 string MoveProcessor::ProcessMove()
 {
     Vector2 placement;
-    Macrofield mfield = gameField.GetMacro();
+    Macrofield* mfield = gameField.GetMacro();
 
-    if (mfield.mandatoryField < 0)
+    if (mfield->mandatoryField < 0)
     {
-        this->DoAnyFieldMove();
+        placement = this->DoAnyFieldMove();
     }
     else
     {
-        Field field = mfield.GetField(mfield.mandatoryField);
-        this->DoSpecificFieldMove(mfield.mandatoryField, field);
+        Field field = mfield->GetField(mfield->mandatoryField);
+        placement = this->DoSpecificFieldMove(mfield->mandatoryField, field);
     }
 
     stringstream command;
@@ -42,18 +42,19 @@ string MoveProcessor::ProcessMove()
 
 Vector2 MoveProcessor::DoAnyFieldMove()
 {
-    Macrofield mfield = gameField.GetMacro();
+    Macrofield* mfield = gameField.GetMacro();
 
     //Get all the field scores (is between 0.0 to 1.0 derived from the highest score).
-    array<float, 9> normalizedFields = mfield.GetNormalizedFieldScores();
+    array<float, 9> normalizedFields = mfield->GetNormalizedFieldScores();
 
     //Find the best field that isn't insignificant.
     int bestFieldIndex = -1;
-    float bestFieldScore = 0.0f;
+    float bestFieldScore = -999.0f;
+
     for (int i = 0; i < 9; i++)
     {
         //Filter out any fields that have no use anymore.
-        if (!mfield.significantFields.at(i))
+        if (!mfield->significantFields.at(i))
         {
             continue;
         }
@@ -74,13 +75,13 @@ Vector2 MoveProcessor::DoAnyFieldMove()
     //Play out our move.
 
     //Get our field.
-    Field field = mfield.GetField(bestFieldIndex);
+    Field field = mfield->GetField(bestFieldIndex);
 
     //Find a move for this field.
     int move = this->GetMoveForField(field);
 
     //Update it the macro board.
-    mfield.UpdateField(bestFieldIndex, move);
+    mfield->UpdateField(bestFieldIndex, move);
 
     return translate_coordinates(bestFieldIndex, move);
 }
@@ -91,7 +92,7 @@ Vector2 MoveProcessor::DoSpecificFieldMove(int index, Field field)
     int move = this->GetMoveForField(field);
 
     //Update it the macro board.
-    this->gameField.GetMacro().UpdateField(index, move);
+    gameField.GetMacro()->UpdateField(index, move);
 
     return translate_coordinates(index, move);
 }

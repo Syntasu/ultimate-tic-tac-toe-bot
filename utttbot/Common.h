@@ -6,6 +6,7 @@
 #include <vector>
 #include <iterator>
 #include <array>
+#include <random>
 #include <functional>
 
 using namespace std;

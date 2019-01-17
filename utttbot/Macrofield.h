@@ -22,7 +22,7 @@ public:
 
     array<Field, 9> fields;
     array<bool, 9> significantFields;
-    int mandatoryField = -1;
+    int mandatoryField = -432817481;
 };
 
 #endif

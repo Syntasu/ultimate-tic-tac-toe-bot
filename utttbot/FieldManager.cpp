@@ -1,8 +1,9 @@
 #include "FieldManager.h"
 
-FieldManager::FieldManager(Macrofield& mfield)
-    : macrofield(mfield)
-{ }
+FieldManager::FieldManager(Macrofield* mfield)
+{
+    this->macrofield = mfield;
+}
 
 void FieldManager::RedefineFields(string tape)
 {
@@ -27,7 +28,7 @@ void FieldManager::RedefineFields(string tape)
                 }
             }
 
-            macrofield.SetField(fieldIndex++, rowData);
+            macrofield->SetField(fieldIndex++, rowData);
             rowData = "";
         }
     }
@@ -46,15 +47,15 @@ void FieldManager::Apply(Command command)
         }
         else if (command.key == "macroboard")
         {
-            Macrofield mfield = this->GetMacro();
-            mfield.GetMandatoryField(command.value);
-            mfield.GetSignificantFields(command.value);
+            Macrofield* mfield = this->GetMacro();
+            mfield->GetMandatoryField(command.value);
+            mfield->GetSignificantFields(command.value);
             cerr << "Received macro update";
         }
     }
 }
 
-Macrofield& FieldManager::GetMacro()
+Macrofield* FieldManager::GetMacro()
 {
     return this->macrofield;
 }

@@ -14,8 +14,11 @@ int main()
 {
     //Reference to our classes.
     Settings settings = Settings();
+
     Macrofield field = Macrofield();
-    FieldManager fieldManager = FieldManager(field);
+    Macrofield* field_ptr = &field;
+    FieldManager fieldManager = FieldManager(field_ptr);
+
     MoveProcessor moveProc = MoveProcessor(settings, fieldManager);
     CommandProcessor cmdproc = CommandProcessor();
 

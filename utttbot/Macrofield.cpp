@@ -93,6 +93,7 @@ void Macrofield::GetMandatoryField(string input)
 void Macrofield::GetSignificantFields(string input)
 {
     vector<string> values = split_with_delim(input, ',');
+    array<bool, 9> res;
 
     for (int i = 0; i < 9; i++)
     {
@@ -105,16 +106,19 @@ void Macrofield::GetSignificantFields(string input)
 
             if (field.IsTerminal())
             {
-                significantFields[i] = false;
+                res[i] = false;
             }
             else
             {
-                significantFields[i] = true;
+                res[i] = true;
             }
         }
         else
         {
-            significantFields[i] = false;
+            res[i] = false;
         }
     }
+
+    cerr << "I've set the sigfields!" << endl;
+    this->significantFields = res;
 }

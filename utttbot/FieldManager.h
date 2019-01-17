@@ -9,13 +9,13 @@
 class FieldManager
 {
 public:
-    FieldManager(Macrofield&);
+    FieldManager(Macrofield*);
 
     void Apply(Command command);
-    Macrofield& GetMacro();
+    Macrofield* GetMacro();
 
 private:
-    Macrofield& macrofield;
+    Macrofield* macrofield;
     void RedefineFields(string values);
 };
 
