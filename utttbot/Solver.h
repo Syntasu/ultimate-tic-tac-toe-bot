@@ -12,6 +12,8 @@ class Solver {
 
 public:
     Solver();
+
+    int Heuristic(Field field, int depth);
     void Reset();
     int ProcessMove(Field field);
     vector<Field> Expand(Field);

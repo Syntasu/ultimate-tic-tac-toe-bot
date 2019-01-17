@@ -10,10 +10,10 @@
         x o x -> Mixed row, this is a draw.
         o o x -> Etc.
 */
-const int EVAL_WIN = 25;
-const int EVAL_MAX_NON_WIN = 20;
-const int EVAL_ONE_STEP_AWAY = 10;
-const int EVAL_TWO_STEP_AWAY = 5;
+const int EVAL_WIN = 5;
+const int EVAL_MAX_NON_WIN = 3;
+const int EVAL_ONE_STEP_AWAY = 2;
+const int EVAL_TWO_STEP_AWAY = 1;
 
 struct EvalResult
 {
@@ -116,6 +116,40 @@ int HasWinner(Field* field)
 
     return false;
 }
+
+FieldState GetWinner(Field* field)
+{
+    vector<EvalResult> results = {
+        //Rows...
+        EvaluateField(field, FSSelf, { 0, 1, 2 }),
+        EvaluateField(field, FSSelf, { 3, 4, 5 }),
+        EvaluateField(field, FSSelf, { 6, 7, 8 }),
+
+        //Cols...
+        EvaluateField(field, FSSelf, { 0, 3, 6 }),
+        EvaluateField(field, FSSelf, { 1, 4, 7 }),
+        EvaluateField(field, FSSelf, { 2, 5, 8 }),
+
+        //Diagonals...
+        EvaluateField(field, FSSelf, { 0, 4, 8 }),
+        EvaluateField(field, FSSelf, { 2, 4, 6 }),
+    };
+
+    vector<EvalResult>::const_iterator it = results.begin();
+
+    for (; it != results.end(); it++)
+    {
+        EvalResult result = *it;
+
+        if (result.winner)
+        {
+            return result.owner;
+        }
+    }
+
+    return FSEmpty;
+}
+
 
 inline int Evaluate(Field* field, FieldState& perspective)
 {

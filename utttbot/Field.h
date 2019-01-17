@@ -41,7 +41,6 @@ struct Field {
         }
 
         fieldSlots[index] = state;
-        lastMove = index;
     }
 
     inline FieldState GetSlot(int index)
@@ -132,6 +131,11 @@ struct Field {
 
         if (playerSelf == playerOpponent) return FSSelf;
         return (playerSelf > playerOpponent) ? FSOpponent : FSSelf;
+    }
+
+    void SetLastMove(int move)
+    {
+        this->lastMove = move;
     }
 
     inline int GetLastMove()

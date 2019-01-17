@@ -3,6 +3,8 @@
 #include "FieldManager.h"
 #include "Settings.h"
 
+#include "Solver.h"
+
 void HandleSettingsCommand(Settings&, Command);
 void HandleUpdateCommand(FieldManager&, Command);
 void HandleActionCommand(MoveProcessor&, Command);

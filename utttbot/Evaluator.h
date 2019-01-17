@@ -6,5 +6,6 @@
 
 int FieldEvaluationFunction(Field* field, FieldState perspective);
 int HasWinner(Field* field);
+FieldState GetWinner(Field* field);
 
 #endif
