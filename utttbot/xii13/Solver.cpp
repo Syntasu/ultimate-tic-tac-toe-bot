@@ -6,14 +6,15 @@ int Solver::Heuristic(Field field, int depth)
 {
     Field* fptr = &field;
     FieldState winner = GetWinner(fptr);
+    int depthInv = 9 - depth;
 
     if (winner == FSSelf)
     {
-        return 9 - depth;
+        return 9 - depthInv;
     }
     else if(winner == FSOpponent)
     {
-        return -9 + depth;
+        return -9 + depthInv;
     }
 
     return 0;
@@ -29,8 +30,8 @@ int Solver::ProcessMove(Field field)
 {
     Reset();
 
-    AlphaBetaPruningSolver(field, 9, 
-        SOLVER_MAXIMIZER_WORST, 
+    AlphaBetaPruningSolver(field, 9,
+        SOLVER_MAXIMIZER_WORST,
         SOLVER_MINIMIZER_WORST,
         true
     );
@@ -64,8 +65,7 @@ int Solver::MinimaxSolver(Field field, int depth, bool maximizing)
     if (depth == 0 || field.IsTerminal())
     {
         FieldState player = maximizing ? FSSelf : FSOpponent;
-        Field* field_ptr = &field;
-        return FieldEvaluationFunction(field_ptr, player);
+        return Heuristic(field, player);
     }
 
     if (maximizing)
@@ -86,7 +86,6 @@ int Solver::MinimaxSolver(Field field, int depth, bool maximizing)
 
             if (max_value > AiBestScore)
             {
-                cerr << "yay " << AiBestMove << endl;
                 AiBestMove = field.GetLastMove();
                 AiBestScore = max_value;
             }

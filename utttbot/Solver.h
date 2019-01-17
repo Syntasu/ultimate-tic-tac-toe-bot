@@ -7,8 +7,8 @@
 
 class Solver {
 
-    const int SOLVER_MAXIMIZER_WORST = -1000;
-    const int SOLVER_MINIMIZER_WORST = 1000;
+    const int SOLVER_MAXIMIZER_WORST = -999999;
+    const int SOLVER_MINIMIZER_WORST = 999999;
 
 public:
     Solver();
