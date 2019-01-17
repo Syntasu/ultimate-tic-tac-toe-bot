@@ -53,7 +53,10 @@ Vector2 MoveProcessor::DoAnyFieldMove()
     for (int i = 0; i < 9; i++)
     {
         //Filter out any fields that have no use anymore.
-        if (!mfield.significantFields.at(i)) continue;
+        if (!mfield.significantFields.at(i))
+        {
+            continue;
+        }
 
         if (normalizedFields.at(i) > bestFieldScore)
         {

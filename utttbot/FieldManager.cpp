@@ -1,5 +1,9 @@
 #include "FieldManager.h"
 
+FieldManager::FieldManager(Macrofield& mfield)
+    : macrofield(mfield)
+{ }
+
 void FieldManager::RedefineFields(string tape)
 {
     vector<string> tapeValues = split_with_delim(tape, ',');
@@ -24,16 +28,9 @@ void FieldManager::RedefineFields(string tape)
             }
 
             macrofield.SetField(fieldIndex++, rowData);
-            cerr << rowData << endl;
             rowData = "";
         }
     }
-}
-
-FieldManager::FieldManager()
-{
-    //Initialize the macrofield.
-    macrofield = Macrofield();
 }
 
 void FieldManager::Apply(Command command)
@@ -45,18 +42,19 @@ void FieldManager::Apply(Command command)
         {
             //Update the definitions of the fields.
             this->RedefineFields(command.value);
+            cerr << "Received field update";
         }
         else if (command.key == "macroboard")
         {
             Macrofield mfield = this->GetMacro();
             mfield.GetMandatoryField(command.value);
             mfield.GetSignificantFields(command.value);
-
+            cerr << "Received macro update";
         }
     }
 }
 
-Macrofield FieldManager::GetMacro()
+Macrofield& FieldManager::GetMacro()
 {
     return this->macrofield;
 }

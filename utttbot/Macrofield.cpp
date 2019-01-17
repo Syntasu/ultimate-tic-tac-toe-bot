@@ -1,5 +1,7 @@
 #include "Macrofield.h"
 
+Macrofield::Macrofield() {}
+
 void Macrofield::SetField(int index, string fieldData)
 {
     if (index == 0 || index > 9) return;
@@ -43,10 +45,20 @@ array<float, 9> Macrofield::GetNormalizedFieldScores()
         fieldScores[i] = score;
     }
 
+    
     for (int i = 0; i < 9; i++)
     {
-        //Should return between 0.0 and 1.0.
-        float fraction = fieldScores[i] / max;
+        float fraction = 0.0f;
+        if (max > 0.0f && fieldScores.at(i) > 0.0f)
+        {
+            //Should return between 0.0 and 1.0.
+            fraction = fieldScores[i] / max;
+        }
+        else
+        {
+            fraction = 0.0;
+        }
+
         normalizedScores[i] = fraction;
     }
 

@@ -14,7 +14,8 @@ int main()
 {
     //Reference to our classes.
     Settings settings = Settings();
-    FieldManager fieldManager = FieldManager();
+    Macrofield field = Macrofield();
+    FieldManager fieldManager = FieldManager(field);
     MoveProcessor moveProc = MoveProcessor(settings, fieldManager);
     CommandProcessor cmdproc = CommandProcessor();
 
@@ -24,7 +25,7 @@ int main()
 
         //The command is anything but invalid... then log it.
         if (cmd.scope != CommandScope::CmdScopeInvalid)
-            HandleAnyCommand(cmd);
+            //HandleAnyCommand(cmd);
 
         switch (cmd.scope)
         {
@@ -56,7 +57,8 @@ void HandleAnyCommand(Command cmd)
 void HandleActionCommand(MoveProcessor& moveProc, Command cmd)
 {
     string move = moveProc.ProcessMove();
-    cout << move;
+    cerr << "Making a move!... " << move << endl;
+    cout << move << endl;
 }
 
 void HandleSettingsCommand(Settings& settings, Command cmd)
