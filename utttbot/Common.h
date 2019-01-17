@@ -13,6 +13,23 @@ using namespace std;
 #ifndef COMMON_H
 #define COMMON_H
 
+struct Vector2 {
+    int x;
+    int y;
+
+    Vector2() 
+    { 
+        x = 0; 
+        y = 0; 
+    }
+
+    Vector2(int x, int y)
+    {
+        this->x = x;
+        this->y = y;
+    }
+};
+
 inline vector<string> split_with_delim(const string& s, char delimiter)
 {
     vector<string> tokens;
@@ -25,6 +42,14 @@ inline vector<string> split_with_delim(const string& s, char delimiter)
     }
 
     return tokens;
+}
+
+inline Vector2 translate_coordinates(int fieldIndex, int fieldSubIndex)
+{
+    return Vector2(
+        (fieldIndex % 3) * 3 + (fieldSubIndex % 3)
+        (fieldIndex / 3) * 3 + (fieldSubIndex / 3)
+    );
 }
 
 #endif

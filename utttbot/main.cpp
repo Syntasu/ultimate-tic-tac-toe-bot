@@ -15,36 +15,31 @@ void HandleUnknownCommand(Command);
 
 int main() 
 {
-    Solver solver = Solver();
+    //Solver solver = Solver();
+    //Field field = Field(".........");
 
-    Field field = Field(".........");
+    //while (!field.IsTerminal())
+    //{
+    //    if (HasWinner(field))
+    //    {
+    //        break;
+    //    }
 
+    //    solver.Reset();
 
-    while (!field.IsTerminal())
-    {
-        if (HasWinner(field))
-        {
-            break;
-        }
+    //    int bestMove = solver.ProcessMove(field);
+    //    if (bestMove > 0)
+    //    {
+    //        FieldState state = field.GetPlayerTurn();
+    //        field.SetSlot(bestMove, state);
+    //    }
+    //    else
+    //    {
+    //        cerr << "Failed to get move";
+    //    }
+    //}
 
-        solver.Reset();
-
-        int bestMove = solver.ProcessMove(field);
-        if (bestMove > 0)
-        {
-            FieldState state = field.GetPlayerTurn();
-            field.SetSlot(bestMove, state);
-            cerr << bestMove << endl;
-        }
-        else
-        {
-            cerr << "Failed to get move";
-        }
-    }
-    cin.get();
-
-
-
+    //cin.get();
 
     ////Reference to our classes.
     //Settings settings = Settings();
