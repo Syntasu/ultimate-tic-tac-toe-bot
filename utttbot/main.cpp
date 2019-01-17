@@ -2,9 +2,6 @@
 #include "MoveProcessor.h"
 #include "FieldManager.h"
 #include "Settings.h"
-#include "FieldTree.h"
-#include "Evaluator.h"
-#include "Solver.h"
 
 void HandleSettingsCommand(Settings&, Command);
 void HandleUpdateCommand(FieldManager&, Command);
@@ -15,54 +12,29 @@ void HandleUnknownCommand(Command);
 
 int main() 
 {
-    //Solver solver = Solver();
-    //Field field = Field(".........");
+    //Reference to our classes.
+    Settings settings = Settings();
+    FieldManager fieldManager = FieldManager();
+    MoveProcessor moveProc = MoveProcessor(settings, fieldManager);
+    CommandProcessor cmdproc = CommandProcessor();
 
-    //while (!field.IsTerminal())
-    //{
-    //    if (HasWinner(field))
-    //    {
-    //        break;
-    //    }
+    while (true)
+    {
+        Command cmd = cmdproc.Process();
 
-    //    solver.Reset();
+        //The command is anything but invalid... then log it.
+        if (cmd.scope != CommandScope::CmdScopeInvalid)
+            HandleAnyCommand(cmd);
 
-    //    int bestMove = solver.ProcessMove(field);
-    //    if (bestMove > 0)
-    //    {
-    //        FieldState state = field.GetPlayerTurn();
-    //        field.SetSlot(bestMove, state);
-    //    }
-    //    else
-    //    {
-    //        cerr << "Failed to get move";
-    //    }
-    //}
-
-    //cin.get();
-
-    ////Reference to our classes.
-    //Settings settings = Settings();
-    //FieldManager fieldManager = FieldManager();
-
-    //MoveProcessor moveProc = MoveProcessor(settings, fieldManager);
-    //CommandProcessor cmdproc = CommandProcessor();
-
-    //Command cmd = cmdproc.Process();
-
-    ////The command is anything but invalid... then log it.
-    //if (cmd.scope != CommandScope::CmdScopeInvalid)
-    //    HandleAnyCommand(cmd);
-
-    //switch (cmd.scope)
-    //{
-    //case CmdScopeInvalid:  HandleInvalidCommand(cmd); break;
-    //case CmdScopeAction:   HandleActionCommand(moveProc, cmd); break;
-    //case CmdScopeSettings: HandleSettingsCommand(settings, cmd); break;
-    //case CmdScopeUpdate:   HandleUpdateCommand(fieldManager, cmd); break;
-    //default:               HandleUnknownCommand(cmd);
-    //}
-
+        switch (cmd.scope)
+        {
+        case CmdScopeInvalid:  HandleInvalidCommand(cmd); break;
+        case CmdScopeAction:   HandleActionCommand(moveProc, cmd); break;
+        case CmdScopeSettings: HandleSettingsCommand(settings, cmd); break;
+        case CmdScopeUpdate:   HandleUpdateCommand(fieldManager, cmd); break;
+        default:               HandleUnknownCommand(cmd);
+        }
+    }
 	return 0;
 }
 

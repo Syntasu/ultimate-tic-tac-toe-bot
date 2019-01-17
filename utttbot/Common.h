@@ -46,10 +46,9 @@ inline vector<string> split_with_delim(const string& s, char delimiter)
 
 inline Vector2 translate_coordinates(int fieldIndex, int fieldSubIndex)
 {
-    return Vector2(
-        (fieldIndex % 3) * 3 + (fieldSubIndex % 3)
-        (fieldIndex / 3) * 3 + (fieldSubIndex / 3)
-    );
+    int x = (fieldIndex % 3) * 3 + (fieldSubIndex % 3);
+    int y = (fieldIndex / 3) * 3 + (fieldSubIndex / 3);
+    return Vector2(x, y);
 }
 
 #endif

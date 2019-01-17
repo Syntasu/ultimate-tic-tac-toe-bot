@@ -1,5 +1,7 @@
 #include "Solver.h"
 
+Solver::Solver() {}
+
 void Solver::Reset()
 {
     AiBestMove = -999;

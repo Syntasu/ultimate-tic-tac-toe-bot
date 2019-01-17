@@ -45,9 +45,18 @@ void FieldManager::Apply(Command command)
         {
             //Update the definitions of the fields.
             this->RedefineFields(command.value);
+        }
+        else if (command.key == "macroboard")
+        {
+            Macrofield mfield = this->GetMacro();
+            mfield.GetMandatoryField(command.value);
+            mfield.GetSignificantFields(command.value);
 
-            //Recalculate all the fields
-            macrofield.CalculateFieldScores();
         }
     }
+}
+
+Macrofield FieldManager::GetMacro()
+{
+    return this->macrofield;
 }

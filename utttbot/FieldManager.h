@@ -3,13 +3,16 @@
 
 #include "Common.h"
 #include "Command.h"
+#include "Solver.h"
 #include "Macrofield.h"
 
 class FieldManager
 {
 public:
     FieldManager();
+
     void Apply(Command command);
+    Macrofield GetMacro();
 
 private:
     Macrofield macrofield;
