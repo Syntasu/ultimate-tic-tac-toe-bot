@@ -44,7 +44,8 @@ int Solver::MinimaxSolver(Field field, int depth, bool maximizing)
     if (depth == 0 || field.IsTerminal())
     {
         FieldState player = maximizing ? FSSelf : FSOpponent;
-        return FieldEvaluationFunction(field, player);
+        Field* field_ptr = &field;
+        return FieldEvaluationFunction(field_ptr, player);
     }
 
     if (maximizing)
@@ -98,7 +99,8 @@ int Solver::AlphaBetaPruningSolver(
     FieldState player = maximizing ? FSSelf : FSOpponent;
     if (depth == 0 || field.IsTerminal())
     {
-        return FieldEvaluationFunction(field, player);
+        Field* field_ptr = &field;
+        return FieldEvaluationFunction(field_ptr, player);
     }
 
     if (maximizing)

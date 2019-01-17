@@ -16,7 +16,7 @@ public:
 
 private:
     Macrofield* macrofield;
-    void RedefineFields(string values);
+    void UpdateFields(string values);
 };
 
 #endif

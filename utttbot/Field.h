@@ -70,8 +70,8 @@ struct Field {
             switch (tapeValue)
             {
             case '.': SetSlot(i, FieldState::FSEmpty); break;
-            case '0': SetSlot(i, FieldState::FSOpponent); break;
-            case '1': SetSlot(i, FieldState::FSSelf); break;
+            case '0': SetSlot(i, FieldState::FSSelf); break;
+            case '1': SetSlot(i, FieldState::FSOpponent); break;
             }
         }
     }

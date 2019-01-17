@@ -11,7 +11,8 @@ int MoveProcessor::GetMoveForField(Field field)
     if (field.IsTerminal())
         return move;
 
-    if (HasWinner(field))
+    Field* field_ptr = &field;
+    if (HasWinner(field_ptr))
         return move;
 
     return solver.ProcessMove(field);
@@ -28,7 +29,7 @@ string MoveProcessor::ProcessMove()
     }
     else
     {
-        Field field = mfield->GetField(mfield->mandatoryField);
+        Field* field = mfield->GetField(mfield->mandatoryField);
         placement = this->DoSpecificFieldMove(mfield->mandatoryField, field);
     }
 
@@ -75,25 +76,17 @@ Vector2 MoveProcessor::DoAnyFieldMove()
     //Play out our move.
 
     //Get our field.
-    Field field = mfield->GetField(bestFieldIndex);
+    Field* field = mfield->GetField(bestFieldIndex);
 
     //Find a move for this field.
-    int move = this->GetMoveForField(field);
-
-    //Update it the macro board.
-    mfield->UpdateField(bestFieldIndex, move);
-
+    int move = this->GetMoveForField(*field);
     return translate_coordinates(bestFieldIndex, move);
 }
 
-Vector2 MoveProcessor::DoSpecificFieldMove(int index, Field field)
+Vector2 MoveProcessor::DoSpecificFieldMove(int index, Field* field)
 {   
     //Find a move for this field.
-    int move = this->GetMoveForField(field);
-
-    //Update it the macro board.
-    gameField.GetMacro()->UpdateField(index, move);
-
+    int move = this->GetMoveForField(*field);
     return translate_coordinates(index, move);
 }
 

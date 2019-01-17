@@ -1,27 +1,25 @@
 #include "Macrofield.h"
 
-Macrofield::Macrofield() {}
+Macrofield::Macrofield() 
+{
+    for (int i = 0; i < 9; i++)
+    {
+        Field* field_ptr = new Field();
+        fields[i] = field_ptr;
+    }
+}
 
 void Macrofield::SetField(int index, string fieldData)
 {
-    if (index == 0 || index > 9) return;
-    fields[index] = Field(fieldData);
+    if (index < 0 || index > 9) return;
+
+    Field* field = GetField(index);
+    field->Set(fieldData);
 }
 
-Field Macrofield::GetField(int index)
+Field* Macrofield::GetField(int index)
 {
-    if (index == 0 || index > 9) return Field();
-    return fields[index];
-}
-
-void Macrofield::UpdateField(int index, int move)
-{
-    //Copy the field and update it.
-    Field field = Field(fields[index]);
-    field.SetSlot(move, FSSelf);
-
-    //Put it back into the array object.
-    fields[index] = field;
+    return fields.at(index);
 }
 
 //Returns a weighted array of the fields contained in the macro board.
@@ -49,14 +47,16 @@ array<float, 9> Macrofield::GetNormalizedFieldScores()
     for (int i = 0; i < 9; i++)
     {
         float fraction = 0.0f;
+        
+        //Don't divide by zero :(
         if (max > 0.0f && fieldScores.at(i) > 0.0f)
         {
             //Should return between 0.0 and 1.0.
-            fraction = fieldScores[i] / max;
+            fraction = normalizedScores[i] / max;
         }
         else
         {
-            fraction = 0.0;
+            fraction = 0.0f;
         }
 
         normalizedScores[i] = fraction;
@@ -67,23 +67,28 @@ array<float, 9> Macrofield::GetNormalizedFieldScores()
 
 void Macrofield::GetMandatoryField(string input)
 {
+    //NOTE: -2 to indicate no value.
+    //      -1 is reserved for an "any" move.
     int mandatoryField = -2;
+    bool hasMandatoryField = false;
+
     vector<string> values = split_with_delim(input, ',');
 
     for (int i = 0; i < 9; i++)
     {
         if (values[i] == "-1")
         {
-            //Check if this is an "pick it yourself" round.
-            if (mandatoryField == -2)
+            if (!hasMandatoryField)
+            {
+                mandatoryField = i;
+                hasMandatoryField = true;
+            }
+            else
             {
                 mandatoryField = -1;
                 break;
             }
-            else
-            {
-                mandatoryField = i;
-            }
+
         }
     }
 
@@ -102,9 +107,9 @@ void Macrofield::GetSignificantFields(string input)
         //If either the playing field or undecided field.
         if (c == "-1" || c == ".")
         {
-            Field field = GetField(i);
+            Field* field = GetField(i);
 
-            if (field.IsTerminal())
+            if (field->IsTerminal())
             {
                 res[i] = false;
             }

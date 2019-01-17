@@ -41,14 +41,14 @@ public:
 //      array based on value, so we don't have to run same logic over and over again.
 //
 inline EvalResult EvaluateField(
-    Field& field, FieldState perspective, array<int, 3> indices)
+    Field* field, FieldState perspective, array<int, 3> indices)
 {
     int completed = 0;
     FieldState owner = FSEmpty;
 
     for (int i = 0; i < 3; i++)
     {
-        FieldState currentOwner = field.GetSlot(indices[i]);
+        FieldState currentOwner = field->GetSlot(indices[i]);
 
         if(currentOwner == FSEmpty)
             continue;
@@ -84,7 +84,7 @@ inline EvalResult EvaluateField(
     return EvalResult(score, owner, hasWinner);
 }
 
-int HasWinner(Field field)
+int HasWinner(Field* field)
 {
     vector<EvalResult> results = {
         //Rows...
@@ -117,7 +117,7 @@ int HasWinner(Field field)
     return false;
 }
 
-inline int Evaluate(Field& field, FieldState& perspective)
+inline int Evaluate(Field* field, FieldState& perspective)
 {
     int score = 0;
 
@@ -166,10 +166,10 @@ inline int Evaluate(Field& field, FieldState& perspective)
 
 //NOTE: Perspective means how this code is going to distinguish between player or enemy.
 //      Based on the field states.
-int FieldEvaluationFunction(Field field, FieldState perspective)
+int FieldEvaluationFunction(Field* field, FieldState perspective)
 {
     //Is the field empty?
-    if (field.IsEmpty())
+    if (field->IsEmpty())
         return 0;
 
     return Evaluate(field, perspective);

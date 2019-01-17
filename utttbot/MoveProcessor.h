@@ -18,7 +18,7 @@ private:
 
 
     Vector2 DoAnyFieldMove();
-    Vector2 DoSpecificFieldMove(int index, Field field);
+    Vector2 DoSpecificFieldMove(int index, Field* field);
 
     int GetMoveForField(Field field);
 };

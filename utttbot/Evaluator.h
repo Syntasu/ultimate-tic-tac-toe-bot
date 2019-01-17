@@ -4,7 +4,7 @@
 #include "Common.h"
 #include "Field.h"
 
-int FieldEvaluationFunction(Field field, FieldState perspective);
-int HasWinner(Field field);
+int FieldEvaluationFunction(Field* field, FieldState perspective);
+int HasWinner(Field* field);
 
 #endif

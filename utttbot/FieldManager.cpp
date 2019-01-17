@@ -5,7 +5,7 @@ FieldManager::FieldManager(Macrofield* mfield)
     this->macrofield = mfield;
 }
 
-void FieldManager::RedefineFields(string tape)
+void FieldManager::UpdateFields(string tape)
 {
     vector<string> tapeValues = split_with_delim(tape, ',');
     string rowData = "";
@@ -42,7 +42,7 @@ void FieldManager::Apply(Command command)
         if (command.key == "field")
         {
             //Update the definitions of the fields.
-            this->RedefineFields(command.value);
+            this->UpdateFields(command.value);
             cerr << "Received field update";
         }
         else if (command.key == "macroboard")
